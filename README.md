@@ -14,3 +14,8 @@
 ## Note About API Keys and Security
 
 While we acknowledge that API keys should be stored on the server and never be exposed in the frontend, this project is currently solely focused on fetching API data from a publically available API. Therefore there are no real security risks or any real consequence in doing so.
+
+##Attributions:
+
+- Weather icons from <a href="https://www.amcharts.com/free-animated-svg-weather-icons/" target="_blank" rel="noopener">AM Charts</a> See THIRD_PARTY_LICENSES.md for details.
+- Weather icons by <a href="https://github.com/basmilius/weather-icons?tab=readme-ov-file" target="_blank" rel="noopener">Bas Milius</a> and licensed under the MIT License. See THIRD_PARTY_LICENSES.md for details.

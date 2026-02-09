@@ -2,6 +2,9 @@ import "./assets/styles/index.css";
 import "./assets/styles/location.css";
 import "./assets/styles/weather.css";
 
+import cloudyda from "./assets/amcharts_weather_icons_1.0.0/animated/cloudy-day-1.svg";
+import cloudyds from "./assets/amcharts_weather_icons_1.0.0/static/cloudy-day-1.svg";
+
 import {
   defaultBackground,
   basicLayout,
@@ -18,8 +21,11 @@ const formElements = createLocationForm(pageContainers.higherLevelInfoBox);
 const locationInformation = displayLocationInformation(
   pageContainers.higherLevelInfoBox,
 );
-const weatherElements = displayCurrentStats(pageContainers.weatherContainer);
-hourlyForecast(weatherElements.timeBox);
+const weatherElements = displayCurrentStats(
+  pageContainers.weatherContainer,
+  cloudyda,
+);
+hourlyForecast(weatherElements.timeBox, cloudyds);
 
 async function getWeather(location) {
   const firstPartURL =

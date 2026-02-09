@@ -436,6 +436,7 @@ export function displayCurrentStats(container, icon) {
   );
   const timeBox = makeElement("div", "", "box entire-week", "", timeContainer);
 
+  conditionsIcon.src = icon;
   conditionsText.textContent = "Partially cloudy";
   cloudCover.textContent = "25";
   currentTemp.textContent = "51";
@@ -483,17 +484,17 @@ export function displayCurrentStats(container, icon) {
   };
 }
 
-export function hourlyForecast(timeBox) {
+export function hourlyForecast(timeBox, icon) {
   const rowOne = makeElement("div", "", "row", "", timeBox);
   const timeOne = makeElement("div", "", "hour-day", "", rowOne);
-  const weatherOne = makeElement("img", "", "small-icon", "", rowOne);
+  const weatherOne = makeElement("img", "", "static", "", rowOne);
   const tempOneBox = makeElement("p", "", "", "", rowOne);
   const tempOne = makeElement("span", "", "range", "", tempOneBox);
   const tempOneDegree = makeElement("span", "", "", `\u00B0`, tempOneBox);
   const tempOneUnit = makeElement("span", "", "", "", tempOneBox);
   const rowTwo = makeElement("div", "", "row", "", timeBox);
   const timeTwo = makeElement("div", "", "hour-day", "", rowTwo);
-  const weatherTwo = makeElement("img", "", "small-icon", "", rowTwo);
+  const weatherTwo = makeElement("img", "", "static", "", rowTwo);
   const tempTwoBox = makeElement("p", "", "", "", rowTwo);
   const tempTwo = makeElement("span", "", "range", "", tempTwoBox);
   const tempTwoDegree = makeElement("span", "", "", `\u00B0`, tempTwoBox);
@@ -501,40 +502,47 @@ export function hourlyForecast(timeBox) {
 
   const rowThree = makeElement("div", "", "row", "", timeBox);
   const timeThree = makeElement("div", "", "hour-day", "", rowThree);
-  const weatherThree = makeElement("img", "", "small-icon", "", rowThree);
+  const weatherThree = makeElement("img", "", "static", "", rowThree);
   const tempThreeBox = makeElement("p", "", "", "", rowThree);
   const tempThree = makeElement("span", "", "range", "", tempThreeBox);
   const tempThreeDegree = makeElement("span", "", "", `\u00B0`, tempThreeBox);
   const tempThreeUnit = makeElement("span", "", "", "", tempThreeBox);
   const rowFour = makeElement("div", "", "row", "", timeBox);
   const timeFour = makeElement("div", "", "hour-day", "", rowFour);
-  const weatherFour = makeElement("img", "", "small-icon", "", rowFour);
+  const weatherFour = makeElement("img", "", "static", "", rowFour);
   const tempFourBox = makeElement("p", "", "", "", rowFour);
   const tempFour = makeElement("span", "", "range", "", tempFourBox);
   const tempFourDegree = makeElement("span", "", "", `\u00B0`, tempFourBox);
   const tempFourUnit = makeElement("span", "", "", "", tempFourBox);
   const rowFive = makeElement("div", "", "row", "", timeBox);
   const timeFive = makeElement("div", "", "hour-day", "", rowFive);
-  const weatherFive = makeElement("img", "", "small-icon", "", rowFive);
+  const weatherFive = makeElement("img", "", "static", "", rowFive);
   const tempFiveBox = makeElement("p", "", "", "", rowFive);
   const tempFive = makeElement("span", "", "range", "", tempFiveBox);
   const tempFiveDegree = makeElement("span", "", "", `\u00B0`, tempFiveBox);
   const tempFiveUnit = makeElement("span", "", "", "", tempFiveBox);
   const rowSix = makeElement("div", "", "row", "", timeBox);
   const timeSix = makeElement("div", "", "hour-day", "", rowSix);
-  const weatherSix = makeElement("img", "", "small-icon", "", rowSix);
+  const weatherSix = makeElement("img", "", "static", "", rowSix);
   const tempSixBox = makeElement("p", "", "", "", rowSix);
   const tempSix = makeElement("span", "", "range", "", tempSixBox);
   const tempSixDegree = makeElement("span", "", "", `\u00B0`, tempSixBox);
   const tempSixUnit = makeElement("span", "", "", "", tempSixBox);
   const rowSeven = makeElement("div", "", "row", "", timeBox);
   const timeSeven = makeElement("div", "", "hour-day", "", rowSeven);
-  const weatherSeven = makeElement("img", "", "small-icon", "", rowSeven);
+  const weatherSeven = makeElement("img", "", "static", "", rowSeven);
   const tempSevenBox = makeElement("p", "", "", "", rowSeven);
   const tempSeven = makeElement("span", "", "range", "", tempSevenBox);
   const tempSevenDegree = makeElement("span", "", "", `\u00B0`, tempSevenBox);
   const tempSevenUnit = makeElement("span", "", "", "", tempSevenBox);
 
+  weatherOne.src = icon;
+  weatherTwo.src = icon;
+  weatherThree.src = icon;
+  weatherFour.src = icon;
+  weatherFive.src = icon;
+  weatherSix.src = icon;
+  weatherSeven.src = icon;
   timeOne.textContent = "8 AM";
   timeTwo.textContent = "9 AM";
   timeThree.textContent = "10 AM";

@@ -156,3 +156,11 @@
   background-color: white;
   margin-bottom: 3px;
 }
+
+.animated {
+  width: 70%;
+}
+
+.static {
+  background-color: limegreen;
+}

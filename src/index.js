@@ -1,4 +1,25 @@
-console.log("TOP Weather App");
+import "./assets/styles/index.css";
+import "./assets/styles/location.css";
+import "./assets/styles/weather.css";
+
+import {
+  defaultBackground,
+  basicLayout,
+  createLocationForm,
+  displayLocationInformation,
+  displayCurrentStats,
+  hourlyForecast,
+  hourlyTempRange,
+} from "./modules/interface.js";
+
+defaultBackground();
+const pageContainers = basicLayout();
+const formElements = createLocationForm(pageContainers.higherLevelInfoBox);
+const locationInformation = displayLocationInformation(
+  pageContainers.higherLevelInfoBox,
+);
+const weatherElements = displayCurrentStats(pageContainers.weatherContainer);
+hourlyForecast(weatherElements.timeBox);
 
 async function getWeather(location) {
   const firstPartURL =

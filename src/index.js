@@ -4,7 +4,8 @@ import "./assets/styles/weather.css";
 
 import cloudyda from "./assets/amcharts_weather_icons_1.0.0/animated/cloudy-day-1.svg";
 import cloudyds from "./assets/amcharts_weather_icons_1.0.0/static/cloudy-day-1.svg";
-
+import raina from "./assets/amcharts_weather_icons_1.0.0/animated/rainy-6.svg";
+import rains from "./assets/amcharts_weather_icons_1.0.0/static/rainy-6.svg";
 import {
   defaultBackground,
   basicLayout,
@@ -24,8 +25,9 @@ const locationInformation = displayLocationInformation(
 const weatherElements = displayCurrentStats(
   pageContainers.weatherContainer,
   cloudyda,
+  cloudyds,
 );
-hourlyForecast(weatherElements.timeBox, cloudyds);
+hourlyForecast(weatherElements.weeklyBox, cloudyds, rains);
 
 async function getWeather(location) {
   const firstPartURL =
@@ -40,7 +42,13 @@ async function getWeather(location) {
   console.log(weatherData);
 }
 
+console.log(
+  "REMINDER: 2/10 - things to add: hourly/weekly forecast, moonphase, pressure, solar energy/radiation",
+);
+
 //getWeather("san francisco");
+
+//day 1: rain, day 2: rain, day 3: cloudy day, day 4: cloudy day, day 5: rain, day 6: rain, day 7: rain
 
 // Example: Weather Info for San Francisco
 /*

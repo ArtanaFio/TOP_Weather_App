@@ -121,57 +121,9 @@ export function displayLocationInformation(container) {
   };
 }
 
-export function displayCurrentStats(container, icon) {
-  const currentConditionsSection = makeElement(
-    "div",
-    "",
-    "section left-side",
-    "",
-    container,
-  );
-  const leftPanel = makeElement(
-    "div",
-    "",
-    "panel",
-    "",
-    currentConditionsSection,
-  );
-  const middlePanel = makeElement(
-    "div",
-    "",
-    "panel",
-    "",
-    currentConditionsSection,
-  );
-  const rightPanel = makeElement("div", "", "right-side", "", container);
-
-  const conditionsContainer = makeElement(
-    "div",
-    "cond-C",
-    "container larger-container",
-    "",
-    leftPanel,
-  );
-  const conditionsTitle = makeElement(
-    "p",
-    "",
-    "heading",
-    "Conditions",
-    conditionsContainer,
-  );
-  const conditionsBox = makeElement(
-    "div",
-    "",
-    "box uniform",
-    "",
-    conditionsContainer,
-  );
-  const conditionsIcon = makeElement("img", "", "animated", "", conditionsBox);
-  const condTextBox = makeElement("div", "", "text-box", "", conditionsBox);
-  const conditionsText = makeElement("p", "", "condt", "", condTextBox);
-  const cloudCoverText = makeElement("p", "", "", "Cloud Cover: ", condTextBox);
-  const cloudCover = makeElement("span", "", "bold", "", cloudCoverText);
-  const cloudCoverUnit = makeElement("span", "", "bold", "%", cloudCoverText);
+export function displayCurrentStats(container, icon, staticIcon) {
+  const leftSide = makeElement("div", "", "left-side", "", container);
+  const leftPanel = makeElement("div", "", "panel", "", leftSide);
 
   const tempContainer = makeElement(
     "div",
@@ -242,6 +194,34 @@ export function displayCurrentStats(container, icon) {
     feelsLikeMaxText,
   );
   const maxRightBracket = makeElement("span", "", "", ")", feelsLikeMaxText);
+
+  const humidityContainer = makeElement(
+    "div",
+    "hum-C",
+    "container medium-container",
+    "",
+    leftPanel,
+  );
+  const humidityTitle = makeElement(
+    "p",
+    "",
+    "heading",
+    "Humidity",
+    humidityContainer,
+  );
+  const humidityBox = makeElement(
+    "div",
+    "",
+    "box uniform",
+    "",
+    humidityContainer,
+  );
+  const humidityText = makeElement("p", "", "main center", "", humidityBox);
+  const humidity = makeElement("span", "", "bold", "", humidityText);
+  const humidityUnit = makeElement("span", "", "bold", "%", humidityText);
+  const dewPointText = makeElement("p", "", "", `Dew point: `, humidityBox);
+  const dewPoint = makeElement("span", "", "bold", "", dewPointText);
+  const dewPointUnit = makeElement("span", "", "bold", "\u00B0", dewPointText);
 
   const precipitationContainer = makeElement(
     "div",
@@ -315,40 +295,16 @@ export function displayCurrentStats(container, icon) {
     preciptationProbabilityText,
   );
 
-  const humidityContainer = makeElement(
-    "div",
-    "hum-C",
-    "container medium-container",
-    "",
-    middlePanel,
-  );
-  const humidityTitle = makeElement(
-    "p",
-    "",
-    "heading",
-    "Humidity",
-    humidityContainer,
-  );
-  const humidityBox = makeElement(
-    "div",
-    "",
-    "box uniform",
-    "",
-    humidityContainer,
-  );
-  const humidityText = makeElement("p", "", "main center", "", humidityBox);
-  const humidity = makeElement("span", "", "bold", "", humidityText);
-  const humidityUnit = makeElement("span", "", "bold", "%", humidityText);
-  const dewPointText = makeElement("p", "", "", `Dew point: `, humidityBox);
-  const dewPoint = makeElement("span", "", "bold", "", dewPointText);
-  const dewPointUnit = makeElement("span", "", "bold", "\u00B0", dewPointText);
+  // -------------------------------------------------------------------------------
+
+  const rightPanel = makeElement("div", "", "panel", "", leftSide);
 
   const windContainer = makeElement(
     "div",
     "wind-C",
     "container medium-container",
     "",
-    middlePanel,
+    rightPanel,
   );
   const windTitle = makeElement(
     "p",
@@ -389,9 +345,9 @@ export function displayCurrentStats(container, icon) {
   const uvContainer = makeElement(
     "div",
     "uv-C",
-    "container medium container",
+    "container medium-container",
     "",
-    middlePanel,
+    rightPanel,
   );
   const uvTitle = makeElement(
     "p",
@@ -412,19 +368,167 @@ export function displayCurrentStats(container, icon) {
     " miles",
     visibilityText,
   );
-  const timeContainer = makeElement(
+
+  // --------------------------------------------------------------------------
+
+  const mainSection = makeElement("div", "", "section", "", container);
+
+  const conditionsContainer = makeElement(
+    "div",
+    "cond-C",
+    "container larger-container",
+    "",
+    mainSection,
+  );
+  const conditionsTitle = makeElement(
+    "p",
+    "",
+    "heading",
+    "Conditions",
+    conditionsContainer,
+  );
+  const conditionsBox = makeElement(
+    "div",
+    "",
+    "box uniform",
+    "",
+    conditionsContainer,
+  );
+  const conditionsIcon = makeElement("img", "", "animated", "", conditionsBox);
+  const condTextBox = makeElement("div", "", "text-box", "", conditionsBox);
+  const conditionsText = makeElement("p", "", "condt", "", condTextBox);
+  const cloudCoverText = makeElement("p", "", "", "Cloud Cover: ", condTextBox);
+  const cloudCover = makeElement("span", "", "bold", "", cloudCoverText);
+  const cloudCoverUnit = makeElement("span", "", "bold", "%", cloudCoverText);
+
+  const hourlyContainer = makeElement(
+    "div",
+    "hour-C",
+    "container",
+    "",
+    mainSection,
+  );
+  const hourlyTitle = makeElement(
+    "p",
+    "",
+    "heading",
+    "Hourly Forecast",
+    hourlyContainer,
+  );
+  const hourlyBox = makeElement(
+    "div",
+    "",
+    "long-box uniform",
+    "",
+    hourlyContainer,
+  );
+  const columnOne = makeElement("div", "", "column", "", hourlyBox);
+  const hourOne = makeElement("p", "", "hour", "", columnOne);
+  const weathOne = makeElement(
+    "img",
+    "",
+    "hourly-weather static",
+    "",
+    columnOne,
+  );
+  const tempOneText = makeElement("p", "", "", "", columnOne);
+  const hourlyTempOne = makeElement("span", "", "", "", tempOneText);
+  const tempDegreeOne = makeElement("span", "", "", "\u00B0", tempOneText);
+  const tempUnitOne = makeElement("span", "", "", "", tempOneText);
+
+  const columnTwo = makeElement("div", "", "column", "", hourlyBox);
+  const hourTwo = makeElement("p", "", "hour", "", columnTwo);
+  const weathTwo = makeElement(
+    "img",
+    "",
+    "hourly-weather static",
+    "",
+    columnTwo,
+  );
+  const tempTwoText = makeElement("p", "", "", "", columnTwo);
+  const hourlyTempTwo = makeElement("span", "", "", "", tempTwoText);
+  const tempDegreeTwo = makeElement("span", "", "", "\u00B0", tempTwoText);
+  const tempUnitTwo = makeElement("span", "", "", "", tempTwoText);
+
+  const columnThree = makeElement("div", "", "column", "", hourlyBox);
+  const hourThree = makeElement("p", "", "hour", "", columnThree);
+  const weathThree = makeElement(
+    "img",
+    "",
+    "hourly-weather static",
+    "",
+    columnThree,
+  );
+  const tempThreeText = makeElement("p", "", "", "", columnThree);
+  const hourlyTempThree = makeElement("span", "", "", "", tempThreeText);
+  const tempDegreeThree = makeElement("span", "", "", "\u00B0", tempThreeText);
+  const tempUnitThree = makeElement("span", "", "", "", tempThreeText);
+
+  const columnFour = makeElement("div", "", "column", "", hourlyBox);
+  const hourFour = makeElement("div", "", "hour", "", columnFour);
+  const weathFour = makeElement(
+    "img",
+    "",
+    "hourly-weather static",
+    "",
+    columnFour,
+  );
+  const tempFourText = makeElement("p", "", "", "", columnFour);
+  const hourlyTempFour = makeElement("span", "", "", "", tempFourText);
+  const tempDegreeFour = makeElement("span", "", "", "\u00B0", tempFourText);
+  const tempUnitFour = makeElement("span", "", "", "", tempFourText);
+
+  const columnFive = makeElement("div", "", "column", "", hourlyBox);
+  const hourFive = makeElement("p", "", "hour", "", columnFive);
+  const weathFive = makeElement(
+    "img",
+    "",
+    "hourly-weather static",
+    "",
+    columnFive,
+  );
+  const tempFiveText = makeElement("p", "", "", "", columnFive);
+  const hourlyTempFive = makeElement("span", "", "", "", tempFiveText);
+  const tempDegreeFive = makeElement("span", "", "", "\u00B0", tempFiveText);
+  const tempUnitFive = makeElement("span", "", "", "", tempFiveText);
+
+  hourOne.textContent = "8 AM";
+  hourTwo.textContent = "9 AM";
+  hourThree.textContent = "10 AM";
+  hourFour.textContent = "11 AM";
+  hourFive.textContent = "12 PM";
+  weathOne.src = staticIcon;
+  weathTwo.src = staticIcon;
+  weathThree.src = staticIcon;
+  weathFour.src = staticIcon;
+  weathFive.src = staticIcon;
+  hourlyTempOne.textContent = "51";
+  hourlyTempTwo.textContent = "54.1";
+  hourlyTempThree.textContent = "56.9";
+  hourlyTempFour.textContent = "58.9";
+  hourlyTempFive.textContent = "61.1";
+  tempUnitOne.textContent = "F";
+  tempUnitTwo.textContent = "F";
+  tempUnitThree.textContent = "F";
+  tempUnitFour.textContent = "F";
+  tempUnitFive.textContent = "F";
+  // -----------------------------------------------------------------------------
+
+  const rightSide = makeElement("div", "", "right-side", "", container);
+
+  const weeklyContainer = makeElement(
     "div",
     "week-C",
     "container",
     "",
-    rightPanel,
+    rightSide,
   );
-  const timeTop = makeElement("div", "time-top", "", "", timeContainer);
-  const timeTitle = makeElement(
+  const timeTop = makeElement("div", "time-top", "", "", weeklyContainer);
+  const weeklyTitle = makeElement(
     "p",
     "time-title",
     "heading",
-    "Hourly Forecast",
+    "Weekly Forecast",
     timeTop,
   );
   const toggleButton = makeElement(
@@ -434,7 +538,13 @@ export function displayCurrentStats(container, icon) {
     "Weekly",
     timeTop,
   );
-  const timeBox = makeElement("div", "", "box entire-week", "", timeContainer);
+  const weeklyBox = makeElement(
+    "div",
+    "",
+    "box entire-week",
+    "",
+    weeklyContainer,
+  );
 
   conditionsIcon.src = icon;
   conditionsText.textContent = "Partially cloudy";
@@ -458,8 +568,9 @@ export function displayCurrentStats(container, icon) {
   visibility.textContent = "9.9";
 
   return {
-    currentConditionsSection: currentConditionsSection,
-    rightPanel: rightPanel,
+    leftSide: leftSide,
+    mainSection: mainSection,
+    rightSide: rightSide,
     conditionsIcon: conditionsIcon,
     conditionsText: conditionsText,
     cloudCover: cloudCover,
@@ -480,83 +591,82 @@ export function displayCurrentStats(container, icon) {
     uvIndex: uvIndex,
     uvText: uvText,
     visibility: visibility,
-    timeBox: timeBox,
+    weeklyBox: weeklyBox,
   };
 }
 
-export function hourlyForecast(timeBox, icon) {
+export function hourlyForecast(timeBox, icon, icon2) {
   const rowOne = makeElement("div", "", "row", "", timeBox);
   const timeOne = makeElement("div", "", "hour-day", "", rowOne);
   const weatherOne = makeElement("img", "", "static", "", rowOne);
   const tempOneBox = makeElement("p", "", "", "", rowOne);
-  const tempOne = makeElement("span", "", "range", "", tempOneBox);
+  const tempRangeOne = makeElement("span", "", "range", "", tempOneBox);
   const tempOneDegree = makeElement("span", "", "", `\u00B0`, tempOneBox);
   const tempOneUnit = makeElement("span", "", "", "", tempOneBox);
   const rowTwo = makeElement("div", "", "row", "", timeBox);
   const timeTwo = makeElement("div", "", "hour-day", "", rowTwo);
   const weatherTwo = makeElement("img", "", "static", "", rowTwo);
   const tempTwoBox = makeElement("p", "", "", "", rowTwo);
-  const tempTwo = makeElement("span", "", "range", "", tempTwoBox);
+  const tempRangeTwo = makeElement("span", "", "range", "", tempTwoBox);
   const tempTwoDegree = makeElement("span", "", "", `\u00B0`, tempTwoBox);
   const tempTwoUnit = makeElement("span", "", "", "", tempTwoBox);
-
   const rowThree = makeElement("div", "", "row", "", timeBox);
   const timeThree = makeElement("div", "", "hour-day", "", rowThree);
   const weatherThree = makeElement("img", "", "static", "", rowThree);
   const tempThreeBox = makeElement("p", "", "", "", rowThree);
-  const tempThree = makeElement("span", "", "range", "", tempThreeBox);
+  const tempRangeThree = makeElement("span", "", "range", "", tempThreeBox);
   const tempThreeDegree = makeElement("span", "", "", `\u00B0`, tempThreeBox);
   const tempThreeUnit = makeElement("span", "", "", "", tempThreeBox);
   const rowFour = makeElement("div", "", "row", "", timeBox);
   const timeFour = makeElement("div", "", "hour-day", "", rowFour);
   const weatherFour = makeElement("img", "", "static", "", rowFour);
   const tempFourBox = makeElement("p", "", "", "", rowFour);
-  const tempFour = makeElement("span", "", "range", "", tempFourBox);
+  const tempRangeFour = makeElement("span", "", "range", "", tempFourBox);
   const tempFourDegree = makeElement("span", "", "", `\u00B0`, tempFourBox);
   const tempFourUnit = makeElement("span", "", "", "", tempFourBox);
   const rowFive = makeElement("div", "", "row", "", timeBox);
   const timeFive = makeElement("div", "", "hour-day", "", rowFive);
   const weatherFive = makeElement("img", "", "static", "", rowFive);
   const tempFiveBox = makeElement("p", "", "", "", rowFive);
-  const tempFive = makeElement("span", "", "range", "", tempFiveBox);
+  const tempRangeFive = makeElement("span", "", "range", "", tempFiveBox);
   const tempFiveDegree = makeElement("span", "", "", `\u00B0`, tempFiveBox);
   const tempFiveUnit = makeElement("span", "", "", "", tempFiveBox);
   const rowSix = makeElement("div", "", "row", "", timeBox);
   const timeSix = makeElement("div", "", "hour-day", "", rowSix);
   const weatherSix = makeElement("img", "", "static", "", rowSix);
   const tempSixBox = makeElement("p", "", "", "", rowSix);
-  const tempSix = makeElement("span", "", "range", "", tempSixBox);
+  const tempRangeSix = makeElement("span", "", "range", "", tempSixBox);
   const tempSixDegree = makeElement("span", "", "", `\u00B0`, tempSixBox);
   const tempSixUnit = makeElement("span", "", "", "", tempSixBox);
   const rowSeven = makeElement("div", "", "row", "", timeBox);
   const timeSeven = makeElement("div", "", "hour-day", "", rowSeven);
   const weatherSeven = makeElement("img", "", "static", "", rowSeven);
   const tempSevenBox = makeElement("p", "", "", "", rowSeven);
-  const tempSeven = makeElement("span", "", "range", "", tempSevenBox);
+  const tempRangeSeven = makeElement("span", "", "range", "", tempSevenBox);
   const tempSevenDegree = makeElement("span", "", "", `\u00B0`, tempSevenBox);
   const tempSevenUnit = makeElement("span", "", "", "", tempSevenBox);
 
-  weatherOne.src = icon;
-  weatherTwo.src = icon;
+  weatherOne.src = icon2;
+  weatherTwo.src = icon2;
   weatherThree.src = icon;
   weatherFour.src = icon;
-  weatherFive.src = icon;
-  weatherSix.src = icon;
-  weatherSeven.src = icon;
-  timeOne.textContent = "8 AM";
-  timeTwo.textContent = "9 AM";
-  timeThree.textContent = "10 AM";
-  timeFour.textContent = "11 AM";
-  timeFive.textContent = "12 PM";
-  timeSix.textContent = "1 PM";
-  timeSeven.textContent = "2 PM";
-  tempOne.textContent = "51";
-  tempTwo.textContent = "54.1";
-  tempThree.textContent = "56.9";
-  tempFour.textContent = "58.9";
-  tempFive.textContent = "61.1";
-  tempSix.textContent = "63.1";
-  tempSeven.textContent = "63.1";
+  weatherFive.src = icon2;
+  weatherSix.src = icon2;
+  weatherSeven.src = icon2;
+  timeOne.textContent = "February 10";
+  timeTwo.textContent = "February 11";
+  timeThree.textContent = "February 12";
+  timeFour.textContent = "February 13";
+  timeFive.textContent = "February 14";
+  timeSix.textContent = "February 15";
+  timeSeven.textContent = "February 16";
+  tempRangeOne.textContent = "51";
+  tempRangeTwo.textContent = "54.1";
+  tempRangeThree.textContent = "56.9";
+  tempRangeFour.textContent = "58.9";
+  tempRangeFive.textContent = "61.1";
+  tempRangeSix.textContent = "63.1";
+  tempRangeSeven.textContent = "63.1";
   tempOneUnit.textContent = "F";
   tempTwoUnit.textContent = "F";
   tempThreeUnit.textContent = "F";
@@ -580,13 +690,13 @@ export function hourlyForecast(timeBox, icon) {
     weatherFive: weatherFive,
     weatherSix: weatherSix,
     weatherSeven: weatherSeven,
-    tempOne: tempOne,
-    tempTwo: tempTwo,
-    tempThree: tempThree,
-    tempFour: tempFour,
-    tempFive: tempFive,
-    tempSix: tempSix,
-    tempSeven: tempSeven,
+    tempRangeOne: tempRangeOne,
+    tempRangeTwo: tempRangeTwo,
+    tempRangeThree: tempRangeThree,
+    tempRangeFour: tempRangeFour,
+    tempRangeFive: tempRangeFive,
+    tempRangeSix: tempRangeSix,
+    tempRangeSeven: tempRangeSeven,
   };
 }
 

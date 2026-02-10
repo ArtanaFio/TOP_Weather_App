@@ -422,6 +422,92 @@ export function displayCurrentStats(container, icon, staticIcon) {
     "",
     hourlyContainer,
   );
+
+  // -----------------------------------------------------------------------------
+
+  const rightSide = makeElement("div", "", "right-side", "", container);
+
+  const weeklyContainer = makeElement(
+    "div",
+    "week-C",
+    "container",
+    "",
+    rightSide,
+  );
+  const timeTop = makeElement("div", "time-top", "", "", weeklyContainer);
+  const weeklyTitle = makeElement(
+    "p",
+    "time-title",
+    "heading",
+    "Weekly Forecast",
+    timeTop,
+  );
+  const toggleButton = makeElement(
+    "button",
+    "hour-week",
+    "",
+    "Weekly",
+    timeTop,
+  );
+  const weeklyBox = makeElement(
+    "div",
+    "",
+    "box entire-week",
+    "",
+    weeklyContainer,
+  );
+
+  conditionsIcon.src = icon;
+  conditionsText.textContent = "Partially cloudy";
+  cloudCover.textContent = "25";
+  currentTemp.textContent = "51";
+  feelsLikeTemp.textContent = "51";
+  minTemp.textContent = "50";
+  maxTemp.textContent = "63.1";
+  feelsLikeMin.textContent = "50";
+  feelsLikeMax.textContent = "63.1";
+  precipitation.textContent = "0";
+  precipitationType.textContent = "none";
+  precipitationProbability.textContent = "0";
+  humidity.textContent = "22.5";
+  dewPoint.textContent = "13.9";
+  windspeed.textContent = "2.3";
+  windDirection.textContent = "14";
+  windGust.textContent = "4";
+  uvIndex.textContent = "1";
+  uvText.textContent = "Low";
+  visibility.textContent = "9.9";
+
+  return {
+    leftSide: leftSide,
+    mainSection: mainSection,
+    rightSide: rightSide,
+    conditionsIcon: conditionsIcon,
+    conditionsText: conditionsText,
+    cloudCover: cloudCover,
+    currentTemp: currentTemp,
+    feelsLikeTemp: feelsLikeTemp,
+    minTemp: minTemp,
+    maxTemp: maxTemp,
+    feelsLikeMin: feelsLikeMin,
+    feelsLikeMax: feelsLikeMax,
+    precipitation: precipitation,
+    precipitationType: precipitationType,
+    precipitationProbability: precipitationProbability,
+    humidity: humidity,
+    dewPoint: dewPoint,
+    windspeed: windspeed,
+    windDirection: windDirection,
+    windGust: windGust,
+    uvIndex: uvIndex,
+    uvText: uvText,
+    visibility: visibility,
+    hourlyBox: hourlyBox,
+    weeklyBox: weeklyBox,
+  };
+}
+
+export function hourlyForecast(hourlyBox, staticIcon) {
   const columnOne = makeElement("div", "", "column", "", hourlyBox);
   const hourOne = makeElement("p", "", "hour", "", columnOne);
   const weathOne = makeElement(
@@ -512,139 +598,202 @@ export function displayCurrentStats(container, icon, staticIcon) {
   tempUnitThree.textContent = "F";
   tempUnitFour.textContent = "F";
   tempUnitFive.textContent = "F";
-  // -----------------------------------------------------------------------------
-
-  const rightSide = makeElement("div", "", "right-side", "", container);
-
-  const weeklyContainer = makeElement(
-    "div",
-    "week-C",
-    "container",
-    "",
-    rightSide,
-  );
-  const timeTop = makeElement("div", "time-top", "", "", weeklyContainer);
-  const weeklyTitle = makeElement(
-    "p",
-    "time-title",
-    "heading",
-    "Weekly Forecast",
-    timeTop,
-  );
-  const toggleButton = makeElement(
-    "button",
-    "hour-week",
-    "",
-    "Weekly",
-    timeTop,
-  );
-  const weeklyBox = makeElement(
-    "div",
-    "",
-    "box entire-week",
-    "",
-    weeklyContainer,
-  );
-
-  conditionsIcon.src = icon;
-  conditionsText.textContent = "Partially cloudy";
-  cloudCover.textContent = "25";
-  currentTemp.textContent = "51";
-  feelsLikeTemp.textContent = "51";
-  minTemp.textContent = "50";
-  maxTemp.textContent = "63.1";
-  feelsLikeMin.textContent = "50";
-  feelsLikeMax.textContent = "63.1";
-  precipitation.textContent = "0";
-  precipitationType.textContent = "none";
-  precipitationProbability.textContent = "0";
-  humidity.textContent = "22.5";
-  dewPoint.textContent = "13.9";
-  windspeed.textContent = "2.3";
-  windDirection.textContent = "14";
-  windGust.textContent = "4";
-  uvIndex.textContent = "1";
-  uvText.textContent = "Low";
-  visibility.textContent = "9.9";
 
   return {
-    leftSide: leftSide,
-    mainSection: mainSection,
-    rightSide: rightSide,
-    conditionsIcon: conditionsIcon,
-    conditionsText: conditionsText,
-    cloudCover: cloudCover,
-    currentTemp: currentTemp,
-    feelsLikeTemp: feelsLikeTemp,
-    minTemp: minTemp,
-    maxTemp: maxTemp,
-    feelsLikeMin: feelsLikeMin,
-    feelsLikeMax: feelsLikeMax,
-    precipitation: precipitation,
-    precipitationType: precipitationType,
-    precipitationProbability: precipitationProbability,
-    humidity: humidity,
-    dewPoint: dewPoint,
-    windspeed: windspeed,
-    windDirection: windDirection,
-    windGust: windGust,
-    uvIndex: uvIndex,
-    uvText: uvText,
-    visibility: visibility,
-    weeklyBox: weeklyBox,
+    hourOne: hourOne,
+    hourTwo: hourTwo,
+    hourThree: hourThree,
+    hourFour: hourFour,
+    hourFive: hourFive,
+    weathOne: weathOne,
+    weathTwo: weathTwo,
+    weathThree: weathThree,
+    weathFour: weathFour,
+    weathFive: weathFive,
+    hourlyTempOne: hourlyTempOne,
+    hourlyThepTwo: hourlyTempTwo,
+    hourlyTempThree: hourlyTempThree,
+    hourlyTempFour: hourlyTempFour,
+    hourlyTempFive: hourlyTempFive,
+    tempUnitOne: tempUnitOne,
+    tempUnitTwo: tempUnitTwo,
+    tempUnitThree: tempUnitThree,
+    tempUnitFour: tempUnitFour,
+    tempUnitFive: tempUnitFive,
   };
 }
 
-export function hourlyForecast(timeBox, icon, icon2) {
+export function weeklyForecast(timeBox, icon, icon2) {
   const rowOne = makeElement("div", "", "row", "", timeBox);
   const timeOne = makeElement("div", "", "hour-day", "", rowOne);
   const weatherOne = makeElement("img", "", "static", "", rowOne);
-  const tempOneBox = makeElement("p", "", "", "", rowOne);
-  const tempRangeOne = makeElement("span", "", "range", "", tempOneBox);
-  const tempOneDegree = makeElement("span", "", "", `\u00B0`, tempOneBox);
-  const tempOneUnit = makeElement("span", "", "", "", tempOneBox);
+  const tempOneBox = makeElement("p", "", "range", "", rowOne);
+  const lowOne = makeElement("span", "", "", "L: ", tempOneBox);
+  const minTempOne = makeElement("span", "", "bold", "", tempOneBox);
+  const minTempOneDegree = makeElement(
+    "span",
+    "",
+    "bold",
+    `\u00B0`,
+    tempOneBox,
+  );
+  const minTempOneUnit = makeElement("span", "", "bold", "", tempOneBox);
+  const dividerOne = makeElement("span", "", "", " | ", tempOneBox);
+  const highOne = makeElement("span", "", "", "H: ", tempOneBox);
+  const maxTempOne = makeElement("span", "", "bold", "", tempOneBox);
+  const maxTempOneDegree = makeElement(
+    "span",
+    "",
+    "bold",
+    `\u00B0`,
+    tempOneBox,
+  );
+  const maxTempOneUnit = makeElement("span", "", "bold", "", tempOneBox);
+
   const rowTwo = makeElement("div", "", "row", "", timeBox);
   const timeTwo = makeElement("div", "", "hour-day", "", rowTwo);
   const weatherTwo = makeElement("img", "", "static", "", rowTwo);
-  const tempTwoBox = makeElement("p", "", "", "", rowTwo);
-  const tempRangeTwo = makeElement("span", "", "range", "", tempTwoBox);
-  const tempTwoDegree = makeElement("span", "", "", `\u00B0`, tempTwoBox);
-  const tempTwoUnit = makeElement("span", "", "", "", tempTwoBox);
+  const tempTwoBox = makeElement("p", "", "range", "", rowTwo);
+  const lowTwo = makeElement("span", "", "", "L: ", tempTwoBox);
+  const minTempTwo = makeElement("span", "", "bold", "", tempTwoBox);
+  const tempTwoDegree = makeElement("span", "", "bold", `\u00B0`, tempTwoBox);
+  const minTempTwoUnit = makeElement("span", "", "bold", "", tempTwoBox);
+  const divideTwo = makeElement("span", "", "", " | ", tempTwoBox);
+  const highTwo = makeElement("span", "", "", "H: ", tempTwoBox);
+  const maxTempTwo = makeElement("span", "", "bold", "", tempTwoBox);
+  const maxTempTwoDegree = makeElement(
+    "span",
+    "",
+    "bold",
+    `\u00B0`,
+    tempTwoBox,
+  );
+  const maxTempTwoUnit = makeElement("span", "", "bold", "", tempTwoBox);
+
   const rowThree = makeElement("div", "", "row", "", timeBox);
   const timeThree = makeElement("div", "", "hour-day", "", rowThree);
   const weatherThree = makeElement("img", "", "static", "", rowThree);
-  const tempThreeBox = makeElement("p", "", "", "", rowThree);
-  const tempRangeThree = makeElement("span", "", "range", "", tempThreeBox);
-  const tempThreeDegree = makeElement("span", "", "", `\u00B0`, tempThreeBox);
-  const tempThreeUnit = makeElement("span", "", "", "", tempThreeBox);
+  const tempThreeBox = makeElement("p", "", "range", "", rowThree);
+  const minTempThree = makeElement("span", "", "bold", "", tempThreeBox);
+  const minTempThreeDegree = makeElement(
+    "span",
+    "",
+    "bold",
+    `\u00B0`,
+    tempThreeBox,
+  );
+  const minTempThreeUnit = makeElement("span", "", "bold", "", tempThreeBox);
+  const divideThree = makeElement("span", "", "", " | ", tempThreeBox);
+  const highThree = makeElement("span", "", "", "H: ", tempThreeBox);
+  const maxTempThree = makeElement("span", "", "bold", "", tempThreeBox);
+  const maxTempThreeDegree = makeElement(
+    "span",
+    "",
+    "bold",
+    `\u00B0`,
+    tempThreeBox,
+  );
+  const maxTempThreeUnit = makeElement("span", "", "bold", "", tempThreeBox);
+
   const rowFour = makeElement("div", "", "row", "", timeBox);
   const timeFour = makeElement("div", "", "hour-day", "", rowFour);
   const weatherFour = makeElement("img", "", "static", "", rowFour);
-  const tempFourBox = makeElement("p", "", "", "", rowFour);
-  const tempRangeFour = makeElement("span", "", "range", "", tempFourBox);
-  const tempFourDegree = makeElement("span", "", "", `\u00B0`, tempFourBox);
-  const tempFourUnit = makeElement("span", "", "", "", tempFourBox);
+  const tempFourBox = makeElement("p", "", "range", "", rowFour);
+  const minTempFour = makeElement("span", "", "bold", "", tempFourBox);
+  const minTempFourDegree = makeElement(
+    "span",
+    "",
+    "bold",
+    `\u00B0`,
+    tempFourBox,
+  );
+  const minTempFourUnit = makeElement("span", "", "bold", "", tempFourBox);
+  const divideFour = makeElement("span", "", "", " | ", tempFourBox);
+  const highFour = makeElement("span", "", "", "H: ", tempFourBox);
+  const maxTempFour = makeElement("span", "", "bold", "", tempFourBox);
+  const maxTempFourDegree = makeElement(
+    "span",
+    "",
+    "bold",
+    `\u00B0`,
+    tempFourBox,
+  );
+  const maxTempFourUnit = makeElement("span", "", "bold", "", tempFourBox);
+
   const rowFive = makeElement("div", "", "row", "", timeBox);
   const timeFive = makeElement("div", "", "hour-day", "", rowFive);
   const weatherFive = makeElement("img", "", "static", "", rowFive);
-  const tempFiveBox = makeElement("p", "", "", "", rowFive);
-  const tempRangeFive = makeElement("span", "", "range", "", tempFiveBox);
-  const tempFiveDegree = makeElement("span", "", "", `\u00B0`, tempFiveBox);
-  const tempFiveUnit = makeElement("span", "", "", "", tempFiveBox);
+  const tempFiveBox = makeElement("p", "", "range", "", rowFive);
+  const minTempFive = makeElement("span", "", "bold", "", tempFiveBox);
+  const minTempFiveDegree = makeElement(
+    "span",
+    "",
+    "bold",
+    `\u00B0`,
+    tempFiveBox,
+  );
+  const minTempFiveUnit = makeElement("span", "", "bold", "", tempFiveBox);
+  const divideFive = makeElement("span", "", "", " | ", tempFiveBox);
+  const highFive = makeElement("span", "", "", "H: ", tempFiveBox);
+  const maxTempFive = makeElement("span", "", "bold", "", tempFiveBox);
+  const maxTempFiveDegree = makeElement(
+    "span",
+    "",
+    "bold",
+    `\u00B0`,
+    tempFiveBox,
+  );
+  const maxTempFiveUnit = makeElement("span", "", "bold", "", tempFiveBox);
+
   const rowSix = makeElement("div", "", "row", "", timeBox);
   const timeSix = makeElement("div", "", "hour-day", "", rowSix);
   const weatherSix = makeElement("img", "", "static", "", rowSix);
-  const tempSixBox = makeElement("p", "", "", "", rowSix);
-  const tempRangeSix = makeElement("span", "", "range", "", tempSixBox);
-  const tempSixDegree = makeElement("span", "", "", `\u00B0`, tempSixBox);
-  const tempSixUnit = makeElement("span", "", "", "", tempSixBox);
+  const tempSixBox = makeElement("p", "", "range", "", rowSix);
+  const minTempSix = makeElement("span", "", "bold", "", tempSixBox);
+  const minTempSixDegree = makeElement(
+    "span",
+    "",
+    "bold",
+    `\u00B0`,
+    tempSixBox,
+  );
+  const minTempSixUnit = makeElement("span", "", "bold", "", tempSixBox);
+  const divideSix = makeElement("span", "", "", " | ", tempSixBox);
+  const highSix = makeElement("span", "", "", "H: ", tempSixBox);
+  const maxTempSix = makeElement("span", "", "bold", "", tempSixBox);
+  const maxTempSixDegree = makeElement(
+    "span",
+    "",
+    "bold",
+    `\u00B0`,
+    tempSixBox,
+  );
+  const maxTempSixUnit = makeElement("span", "", "bold", "", tempSixBox);
+
   const rowSeven = makeElement("div", "", "row", "", timeBox);
   const timeSeven = makeElement("div", "", "hour-day", "", rowSeven);
   const weatherSeven = makeElement("img", "", "static", "", rowSeven);
-  const tempSevenBox = makeElement("p", "", "", "", rowSeven);
-  const tempRangeSeven = makeElement("span", "", "range", "", tempSevenBox);
-  const tempSevenDegree = makeElement("span", "", "", `\u00B0`, tempSevenBox);
-  const tempSevenUnit = makeElement("span", "", "", "", tempSevenBox);
+  const tempSevenBox = makeElement("p", "", "range", "", rowSeven);
+  const minTempSeven = makeElement("span", "", "bold", "", tempSevenBox);
+  const minTempSevenDegree = makeElement(
+    "span",
+    "",
+    "bold",
+    `\u00B0`,
+    tempSevenBox,
+  );
+  const minTempSevenUnit = makeElement("span", "", "bold", "", tempSevenBox);
+  const divideSeven = makeElement("span", "", "", " | ", tempSevenBox);
+  const highSeven = makeElement("span", "", "", "H: ", tempSevenBox);
+  const maxTempSeven = makeElement("span", "", "bold", "", tempSevenBox);
+  const maxTempSevenDegree = makeElement(
+    "span",
+    "",
+    "bold",
+    `\u00B0`,
+    tempSevenBox,
+  );
+  const maxTempSevenUnit = makeElement("span", "", "bold", "", tempSevenBox);
 
   weatherOne.src = icon2;
   weatherTwo.src = icon2;
@@ -653,27 +802,45 @@ export function hourlyForecast(timeBox, icon, icon2) {
   weatherFive.src = icon2;
   weatherSix.src = icon2;
   weatherSeven.src = icon2;
-  timeOne.textContent = "February 10";
-  timeTwo.textContent = "February 11";
-  timeThree.textContent = "February 12";
-  timeFour.textContent = "February 13";
-  timeFive.textContent = "February 14";
-  timeSix.textContent = "February 15";
-  timeSeven.textContent = "February 16";
-  tempRangeOne.textContent = "51";
-  tempRangeTwo.textContent = "54.1";
-  tempRangeThree.textContent = "56.9";
-  tempRangeFour.textContent = "58.9";
-  tempRangeFive.textContent = "61.1";
-  tempRangeSix.textContent = "63.1";
-  tempRangeSeven.textContent = "63.1";
-  tempOneUnit.textContent = "F";
-  tempTwoUnit.textContent = "F";
-  tempThreeUnit.textContent = "F";
-  tempFourUnit.textContent = "F";
-  tempFiveUnit.textContent = "F";
-  tempSixUnit.textContent = "F";
-  tempSevenUnit.textContent = "F";
+  timeOne.textContent = "Feb 10";
+  timeTwo.textContent = "Feb 11";
+  timeThree.textContent = "Feb 12";
+  timeFour.textContent = "Feb 13";
+  timeFive.textContent = "Feb 14";
+  timeSix.textContent = "Feb 15";
+  timeSeven.textContent = "Feb 16";
+
+  minTempOne.textContent = "49.9";
+  minTempTwo.textContent = "49.9";
+  minTempThree.textContent = "49.2";
+  minTempFour.textContent = "48.5";
+  minTempFive.textContent = "48.8";
+  minTempSix.textContent = "48.5";
+  minTempSeven.textContent = "46.5";
+
+  minTempOneUnit.textContent = "F";
+  minTempTwoUnit.textContent = "F";
+  minTempThreeUnit.textContent = "F";
+  minTempFourUnit.textContent = "F";
+  minTempFiveUnit.textContent = "F";
+  minTempSixUnit.textContent = "F";
+  minTempSevenUnit.textContent = "F";
+
+  maxTempOne.textContent = "60";
+  maxTempTwo.textContent = "58";
+  maxTempThree.textContent = "58.4";
+  maxTempFour.textContent = "59.3";
+  maxTempFive.textContent = "58.6";
+  maxTempSix.textContent = "55.1";
+  maxTempSeven.textContent = "54.4";
+
+  maxTempOneUnit.textContent = "F";
+  maxTempTwoUnit.textContent = "F";
+  maxTempThreeUnit.textContent = "F";
+  maxTempFourUnit.textContent = "F";
+  maxTempFiveUnit.textContent = "F";
+  maxTempSixUnit.textContent = "F";
+  maxTempSevenUnit.textContent = "F";
 
   return {
     timeOne: timeOne,
@@ -690,13 +857,34 @@ export function hourlyForecast(timeBox, icon, icon2) {
     weatherFive: weatherFive,
     weatherSix: weatherSix,
     weatherSeven: weatherSeven,
-    tempRangeOne: tempRangeOne,
-    tempRangeTwo: tempRangeTwo,
-    tempRangeThree: tempRangeThree,
-    tempRangeFour: tempRangeFour,
-    tempRangeFive: tempRangeFive,
-    tempRangeSix: tempRangeSix,
-    tempRangeSeven: tempRangeSeven,
+    minTempOne: minTempOne,
+    minTempTwo: minTempTwo,
+    minTempThree: minTempThree,
+    minTempFour: minTempFour,
+    minTempFive: minTempFive,
+    minTempSix: minTempSix,
+    minTempSeven: minTempSeven,
+    maxTempOne: maxTempOne,
+    maxTempTwo: maxTempTwo,
+    maxTempThree: maxTempThree,
+    maxTempFour: maxTempFour,
+    maxTempFive: maxTempFive,
+    maxTempSix: maxTempSix,
+    maxTempSeven: maxTempSeven,
+    minTempOneUnit: minTempOneUnit,
+    minTempTwoUnit: minTempTwoUnit,
+    minTempThreeUnit: minTempThreeUnit,
+    minTempFourUnit: minTempFourUnit,
+    minTempFiveUnit: minTempFiveUnit,
+    minTempSixUnit: minTempSixUnit,
+    minTempSevenUnit: minTempSevenUnit,
+    maxTempOneUnit: maxTempOneUnit,
+    maxTempTwoUnit: maxTempTwoUnit,
+    maxTempThreeUnit: maxTempThreeUnit,
+    maxTempFourUnit: maxTempFourUnit,
+    maxTempFiveUnit: maxTempFiveUnit,
+    maxTempSixUnit: maxTempSixUnit,
+    maxTempSevenUnit: maxTempSevenUnit,
   };
 }
 

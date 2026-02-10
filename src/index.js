@@ -13,6 +13,7 @@ import {
   displayLocationInformation,
   displayCurrentStats,
   hourlyForecast,
+  weeklyForecast,
   hourlyTempRange,
 } from "./modules/interface.js";
 
@@ -27,7 +28,9 @@ const weatherElements = displayCurrentStats(
   cloudyda,
   cloudyds,
 );
-hourlyForecast(weatherElements.weeklyBox, cloudyds, rains);
+
+hourlyForecast(weatherElements.hourlyBox, cloudyds);
+weeklyForecast(weatherElements.weeklyBox, cloudyds, rains);
 
 async function getWeather(location) {
   const firstPartURL =

@@ -6,6 +6,7 @@ import cloudyda from "./assets/amcharts_weather_icons_1.0.0/animated/cloudy-day-
 import cloudyds from "./assets/amcharts_weather_icons_1.0.0/static/cloudy-day-1.svg";
 import raina from "./assets/amcharts_weather_icons_1.0.0/animated/rainy-6.svg";
 import rains from "./assets/amcharts_weather_icons_1.0.0/static/rainy-6.svg";
+import firstQuarterMoon from "./assets/weather-icons-dev/svg/moon-first-quarter.svg";
 import {
   defaultBackground,
   basicLayout,
@@ -27,6 +28,7 @@ const weatherElements = displayCurrentStats(
   pageContainers.weatherContainer,
   cloudyda,
   cloudyds,
+  firstQuarterMoon,
 );
 
 hourlyForecast(weatherElements.hourlyBox, cloudyds);
@@ -98,7 +100,7 @@ currentConditions:
     temp: 51
     uvindex: 1
     visibility: 9.9
-    winddi: 14
+    winddir: 14
     windgust: 4
     windspeed: 2.3
     [[Prototype]]: Object

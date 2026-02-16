@@ -121,17 +121,12 @@ export function displayLocationInformation(container) {
   };
 }
 
-export function displayCurrentStats(container, icon, staticIcon) {
+export function displayCurrentStats(container, icon, staticIcon, moon) {
   const leftSide = makeElement("div", "", "left-side", "", container);
-  const leftPanel = makeElement("div", "", "panel", "", leftSide);
-
-  const tempContainer = makeElement(
-    "div",
-    "temp-C",
-    "container small-container",
-    "",
-    leftPanel,
-  );
+  //const leftPanel = makeElement("div", "", "panel", "", leftSide);
+  //const middlePanel = makeElement("div", "", "panel", "", leftSide);
+  //const rightPanel = makeElement("div", "", "panel", "", leftSide);
+  const tempContainer = makeElement("div", "temp-C", "container", "", leftSide);
   const temptitle = makeElement(
     "p",
     "",
@@ -198,9 +193,9 @@ export function displayCurrentStats(container, icon, staticIcon) {
   const humidityContainer = makeElement(
     "div",
     "hum-C",
-    "container medium-container",
+    "container",
     "",
-    leftPanel,
+    leftSide,
   );
   const humidityTitle = makeElement(
     "p",
@@ -226,9 +221,9 @@ export function displayCurrentStats(container, icon, staticIcon) {
   const precipitationContainer = makeElement(
     "div",
     "precip-C",
-    "container small-container",
+    "container",
     "",
-    leftPanel,
+    leftSide,
   );
   const precipitationTitle = makeElement(
     "p",
@@ -294,18 +289,98 @@ export function displayCurrentStats(container, icon, staticIcon) {
     "%",
     preciptationProbabilityText,
   );
+  // -------------------------------------------------------------------------------
+
+  const moonContainer = makeElement("div", "moon-C", "container", "", leftSide);
+  const moonTitle = makeElement("p", "", "heading", "Moonphase", moonContainer);
+  const moonBox = makeElement("div", "", "box uniform", "", moonContainer);
+  const moonIcon = makeElement("img", "", "static", "", moonBox);
+  const moonphase = makeElement("p", "", "bold center", "", moonBox);
+
+  const pressureContainer = makeElement(
+    "div",
+    "press-C",
+    "container",
+    "",
+    leftSide,
+  );
+  const pressureTitle = makeElement(
+    "p",
+    "",
+    "heading",
+    "Pressure",
+    pressureContainer,
+  );
+  const pressureBox = makeElement(
+    "div",
+    "",
+    "box uniform",
+    "",
+    pressureContainer,
+  );
+  const pressureText = makeElement("p", "", "main", "", pressureBox);
+  const pressure = makeElement("span", "", "bold center", "", pressureText);
+  const pressureUnit = makeElement("span", "", "", " mb", pressureText);
+
+  const solarContainer = makeElement(
+    "div",
+    "solar-C",
+    "container",
+    "",
+    leftSide,
+  );
+  const solarTitle = makeElement("p", "", "heading", "Solar", solarContainer);
+  const solarBox = makeElement("div", "", "box uniform", "", solarContainer);
+  const solarEnergyText = makeElement("p", "", "", "", solarBox);
+  const solEng = makeElement("span", "", "", "Solar Energy: ", solarEnergyText);
+  const solarEnergy = makeElement("span", "", "bold", "", solarEnergyText);
+  const solarEnergyUnit = makeElement(
+    "span",
+    "",
+    "bold",
+    " MJ/m",
+    solarEnergyText,
+  );
+  const solarEnergySuperscript = makeElement(
+    "sup",
+    "",
+    "bold",
+    "2",
+    solarEnergyText,
+  );
+  const solarRadiationText = makeElement("p", "", "", "", solarBox);
+  const solRad = makeElement(
+    "span",
+    "",
+    "",
+    "Solar Radiation: ",
+    solarRadiationText,
+  );
+  const solarRadiation = makeElement(
+    "span",
+    "",
+    "bold",
+    "",
+    solarRadiationText,
+  );
+  const solarRadiationUnit = makeElement(
+    "span",
+    "",
+    "bold",
+    " W/m",
+    solarRadiationText,
+  );
+  const solarRadiationSuperscript = makeElement(
+    "sup",
+    "",
+    "bold",
+    "2",
+    solarRadiationText,
+  );
 
   // -------------------------------------------------------------------------------
 
-  const rightPanel = makeElement("div", "", "panel", "", leftSide);
-
-  const windContainer = makeElement(
-    "div",
-    "wind-C",
-    "container medium-container",
-    "",
-    rightPanel,
-  );
+  const windContainer = makeElement("div", "wind-C", "container", "", leftSide);
   const windTitle = makeElement(
     "p",
     "",
@@ -342,13 +417,7 @@ export function displayCurrentStats(container, icon, staticIcon) {
   const windGustText = makeElement("p", "", "", "Wind Gust: ", windBox);
   const windGust = makeElement("span", "", "bold", "", windGustText);
   const windGustUnit = makeElement("span", "", "bold", " mph", windGustText);
-  const uvContainer = makeElement(
-    "div",
-    "uv-C",
-    "container medium-container",
-    "",
-    rightPanel,
-  );
+  const uvContainer = makeElement("div", "uv-C", "container", "", leftSide);
   const uvTitle = makeElement(
     "p",
     "",
@@ -434,20 +503,12 @@ export function displayCurrentStats(container, icon, staticIcon) {
     "",
     rightSide,
   );
-  const timeTop = makeElement("div", "time-top", "", "", weeklyContainer);
   const weeklyTitle = makeElement(
     "p",
-    "time-title",
+    "",
     "heading",
     "Weekly Forecast",
-    timeTop,
-  );
-  const toggleButton = makeElement(
-    "button",
-    "hour-week",
-    "",
-    "Weekly",
-    timeTop,
+    weeklyContainer,
   );
   const weeklyBox = makeElement(
     "div",
@@ -477,6 +538,11 @@ export function displayCurrentStats(container, icon, staticIcon) {
   uvIndex.textContent = "1";
   uvText.textContent = "Low";
   visibility.textContent = "9.9";
+  moonIcon.src = moon;
+  moonphase.textContent = "First Quarter Moon";
+  pressure.textContent = "1024";
+  solarEnergy.textContent = "0.3";
+  solarRadiation.textContent = "80";
 
   return {
     leftSide: leftSide,
@@ -502,6 +568,11 @@ export function displayCurrentStats(container, icon, staticIcon) {
     uvIndex: uvIndex,
     uvText: uvText,
     visibility: visibility,
+    moonIcon: moonIcon,
+    moonphase: moonphase,
+    pressure: pressure,
+    solarEnergy: solarEnergy,
+    solarRadiation: solarRadiation,
     hourlyBox: hourlyBox,
     weeklyBox: weeklyBox,
   };

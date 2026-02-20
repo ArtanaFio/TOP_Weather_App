@@ -190,34 +190,56 @@ export function displayCurrentStats(container, icon, staticIcon, moon) {
   );
   const maxRightBracket = makeElement("span", "", "", ")", feelsLikeMaxText);
 
-  const humidityContainer = makeElement(
+  const solarContainer = makeElement(
     "div",
-    "hum-C",
+    "solar-C",
     "container",
     "",
     leftSide,
   );
-  const humidityTitle = makeElement(
+  const solarTitle = makeElement(
     "p",
     "",
     "heading",
-    "Humidity",
-    humidityContainer,
+    "Solar Energy",
+    solarContainer,
   );
-  const humidityBox = makeElement(
-    "div",
+  const solarBox = makeElement("div", "", "box uniform", "", solarContainer);
+  const solarEnergyText = makeElement("p", "", "", "", solarBox);
+  const solarEnergy = makeElement("span", "", "bold main", "", solarEnergyText);
+  const solarEnergyUnit = makeElement(
+    "span",
     "",
-    "box uniform",
-    "",
-    humidityContainer,
+    "bold main",
+    " MJ/m",
+    solarEnergyText,
   );
-  const humidityText = makeElement("p", "", "main center", "", humidityBox);
-  const humidity = makeElement("span", "", "bold", "", humidityText);
-  const humidityUnit = makeElement("span", "", "bold", "%", humidityText);
-  const dewPointText = makeElement("p", "", "", `Dew point: `, humidityBox);
-  const dewPoint = makeElement("span", "", "bold", "", dewPointText);
-  const dewPointUnit = makeElement("span", "", "bold", "\u00B0", dewPointText);
+  const solarEnergySuperscript = makeElement(
+    "sup",
+    "",
+    "bold main",
+    "2",
+    solarEnergyText,
+  );
+  const radiationBox = makeElement("div", "", "el-box", "", solarBox);
+  const solarRadiationText = makeElement(
+    "p",
+    "",
+    "",
+    "Solar Radiation",
+    radiationBox,
+  );
+  const solRad = makeElement("p", "", "", "", radiationBox);
+  const solarRadiation = makeElement("span", "", "bold", "", solRad);
+  const solarRadiationUnit = makeElement("span", "", "bold", " W/m", solRad);
+  const solarRadiationSuperscript = makeElement("sup", "", "bold", "2", solRad);
 
+  const moonContainer = makeElement("div", "moon-C", "container", "", leftSide);
+  const moonTitle = makeElement("p", "", "heading", "Moonphase", moonContainer);
+  const moonBox = makeElement("div", "", "box uniform", "", moonContainer);
+  const moonIcon = makeElement("img", "", "static moon", "", moonBox);
+  const moonphase = makeElement("p", "", "bold center", "", moonBox);
+  // -------------------------------------------------------------------------------
   const precipitationContainer = makeElement(
     "div",
     "precip-C",
@@ -289,95 +311,53 @@ export function displayCurrentStats(container, icon, staticIcon, moon) {
     "%",
     preciptationProbabilityText,
   );
-  // -------------------------------------------------------------------------------
 
-  const moonContainer = makeElement("div", "moon-C", "container", "", leftSide);
-  const moonTitle = makeElement("p", "", "heading", "Moonphase", moonContainer);
-  const moonBox = makeElement("div", "", "box uniform", "", moonContainer);
-  const moonIcon = makeElement("img", "", "static", "", moonBox);
-  const moonphase = makeElement("p", "", "bold center", "", moonBox);
-
-  const pressureContainer = makeElement(
+  const humidityContainer = makeElement(
     "div",
-    "press-C",
+    "hum-C",
     "container",
     "",
     leftSide,
   );
-  const pressureTitle = makeElement(
+  const humidityTitle = makeElement(
     "p",
     "",
     "heading",
-    "Pressure",
-    pressureContainer,
+    "Humidity",
+    humidityContainer,
   );
-  const pressureBox = makeElement(
+  const humidityBox = makeElement(
     "div",
     "",
     "box uniform",
     "",
-    pressureContainer,
+    humidityContainer,
   );
-  const pressureText = makeElement("p", "", "main", "", pressureBox);
-  const pressure = makeElement("span", "", "bold center", "", pressureText);
-  const pressureUnit = makeElement("span", "", "", " mb", pressureText);
+  const humidityText = makeElement("p", "", "main center", "", humidityBox);
+  const humidity = makeElement("span", "", "bold", "", humidityText);
+  const humidityUnit = makeElement("span", "", "bold", "%", humidityText);
+  const dewBox = makeElement("div", "", "el-box", "", humidityBox);
+  const dewPointText = makeElement("p", "", "", "Dew point", dewBox);
+  const dp = makeElement("p", "", "bold", "", dewBox);
+  const dewPoint = makeElement("span", "", "bold", "", dp);
+  const dewPointUnit = makeElement("span", "", "bold", "\u00B0", dp);
 
-  const solarContainer = makeElement(
-    "div",
-    "solar-C",
-    "container",
+  const uvContainer = makeElement("div", "uv-C", "container", "", leftSide);
+  const uvTitle = makeElement(
+    "p",
     "",
-    leftSide,
+    "heading",
+    "UV Index & Visibility",
+    uvContainer,
   );
-  const solarTitle = makeElement("p", "", "heading", "Solar", solarContainer);
-  const solarBox = makeElement("div", "", "box uniform", "", solarContainer);
-  const solarEnergyText = makeElement("p", "", "", "", solarBox);
-  const solEng = makeElement("span", "", "", "Solar Energy: ", solarEnergyText);
-  const solarEnergy = makeElement("span", "", "bold", "", solarEnergyText);
-  const solarEnergyUnit = makeElement(
-    "span",
-    "",
-    "bold",
-    " MJ/m",
-    solarEnergyText,
-  );
-  const solarEnergySuperscript = makeElement(
-    "sup",
-    "",
-    "bold",
-    "2",
-    solarEnergyText,
-  );
-  const solarRadiationText = makeElement("p", "", "", "", solarBox);
-  const solRad = makeElement(
-    "span",
-    "",
-    "",
-    "Solar Radiation: ",
-    solarRadiationText,
-  );
-  const solarRadiation = makeElement(
-    "span",
-    "",
-    "bold",
-    "",
-    solarRadiationText,
-  );
-  const solarRadiationUnit = makeElement(
-    "span",
-    "",
-    "bold",
-    " W/m",
-    solarRadiationText,
-  );
-  const solarRadiationSuperscript = makeElement(
-    "sup",
-    "",
-    "bold",
-    "2",
-    solarRadiationText,
-  );
-
+  const uvBox = makeElement("div", "", "box uniform", "", uvContainer);
+  const uvIndex = makeElement("p", "", "main center bold", "", uvBox);
+  const uvText = makeElement("p", "", "", "", uvBox);
+  const visibilityBox = makeElement("div", "", "el-box", "", uvBox);
+  const visibilityText = makeElement("p", "", "", "Visibility", visibilityBox);
+  const vis = makeElement("p", "", "bold", "", visibilityBox);
+  const visibility = makeElement("span", "", "", "", vis);
+  const visibilityUnit = makeElement("span", "", "", " miles", vis);
   // -------------------------------------------------------------------------------
 
   const windContainer = makeElement("div", "wind-C", "container", "", leftSide);
@@ -402,7 +382,7 @@ export function displayCurrentStats(container, icon, staticIcon, moon) {
     "p",
     "",
     "",
-    "Wind Direction: ",
+    "Wind Direction ",
     windBox,
   );
   const windDirectionSpot = makeElement("p", "", "", "", windBox);
@@ -414,29 +394,42 @@ export function displayCurrentStats(container, icon, staticIcon, moon) {
     `\u00B0`,
     windDirectionSpot,
   );
-  const windGustText = makeElement("p", "", "", "Wind Gust: ", windBox);
-  const windGust = makeElement("span", "", "bold", "", windGustText);
-  const windGustUnit = makeElement("span", "", "bold", " mph", windGustText);
-  const uvContainer = makeElement("div", "uv-C", "container", "", leftSide);
-  const uvTitle = makeElement(
+  const gustBox = makeElement("div", "", "el-box", "", windBox);
+  const windGustText = makeElement("p", "", "", "Wind Gust", gustBox);
+  const wg = makeElement("p", "", "bold", "", gustBox);
+  const windGust = makeElement("span", "", "", "", wg);
+  const windGustUnit = makeElement("span", "", "", " mph", wg);
+
+  const pressureContainer = makeElement(
+    "div",
+    "press-C",
+    "container",
+    "",
+    leftSide,
+  );
+  const pressureTitle = makeElement(
     "p",
     "",
     "heading",
-    "UV Index & Visibility",
-    uvContainer,
+    "Pressure",
+    pressureContainer,
   );
-  const uvBox = makeElement("div", "", "box uniform", "", uvContainer);
-  const uvIndex = makeElement("p", "", "main center bold", "", uvBox);
-  const uvText = makeElement("p", "", "", "", uvBox);
-  const visibilityText = makeElement("p", "", "", "Visibility: ", uvBox);
-  const visibility = makeElement("span", "", "bold", "", visibilityText);
-  const visibilityUnit = makeElement(
-    "span",
+  const pressureBox = makeElement(
+    "div",
     "",
-    "bold",
-    " miles",
-    visibilityText,
+    "box uniform",
+    "",
+    pressureContainer,
   );
+  const pressureText = makeElement(
+    "p",
+    "pressure-text",
+    "main",
+    "",
+    pressureBox,
+  );
+  const pressure = makeElement("span", "", "bold", "", pressureText);
+  const pressureUnit = makeElement("span", "", "bold", " mb", pressureText);
 
   // --------------------------------------------------------------------------
 
@@ -465,8 +458,14 @@ export function displayCurrentStats(container, icon, staticIcon, moon) {
   );
   const conditionsIcon = makeElement("img", "", "animated", "", conditionsBox);
   const condTextBox = makeElement("div", "", "text-box", "", conditionsBox);
-  const conditionsText = makeElement("p", "", "condt", "", condTextBox);
-  const cloudCoverText = makeElement("p", "", "", "Cloud Cover: ", condTextBox);
+  const conditionsText = makeElement("p", "", "condt main", "", condTextBox);
+  const cloudCoverText = makeElement(
+    "p",
+    "",
+    "center",
+    "Cloud Cover: ",
+    condTextBox,
+  );
   const cloudCover = makeElement("span", "", "bold", "", cloudCoverText);
   const cloudCoverUnit = makeElement("span", "", "bold", "%", cloudCoverText);
 
@@ -588,7 +587,7 @@ export function hourlyForecast(hourlyBox, staticIcon) {
     "",
     columnOne,
   );
-  const tempOneText = makeElement("p", "", "", "", columnOne);
+  const tempOneText = makeElement("p", "", "bold", "", columnOne);
   const hourlyTempOne = makeElement("span", "", "", "", tempOneText);
   const tempDegreeOne = makeElement("span", "", "", "\u00B0", tempOneText);
   const tempUnitOne = makeElement("span", "", "", "", tempOneText);
@@ -602,7 +601,7 @@ export function hourlyForecast(hourlyBox, staticIcon) {
     "",
     columnTwo,
   );
-  const tempTwoText = makeElement("p", "", "", "", columnTwo);
+  const tempTwoText = makeElement("p", "", "bold", "", columnTwo);
   const hourlyTempTwo = makeElement("span", "", "", "", tempTwoText);
   const tempDegreeTwo = makeElement("span", "", "", "\u00B0", tempTwoText);
   const tempUnitTwo = makeElement("span", "", "", "", tempTwoText);
@@ -616,7 +615,7 @@ export function hourlyForecast(hourlyBox, staticIcon) {
     "",
     columnThree,
   );
-  const tempThreeText = makeElement("p", "", "", "", columnThree);
+  const tempThreeText = makeElement("p", "", "bold", "", columnThree);
   const hourlyTempThree = makeElement("span", "", "", "", tempThreeText);
   const tempDegreeThree = makeElement("span", "", "", "\u00B0", tempThreeText);
   const tempUnitThree = makeElement("span", "", "", "", tempThreeText);
@@ -630,7 +629,7 @@ export function hourlyForecast(hourlyBox, staticIcon) {
     "",
     columnFour,
   );
-  const tempFourText = makeElement("p", "", "", "", columnFour);
+  const tempFourText = makeElement("p", "", "bold", "", columnFour);
   const hourlyTempFour = makeElement("span", "", "", "", tempFourText);
   const tempDegreeFour = makeElement("span", "", "", "\u00B0", tempFourText);
   const tempUnitFour = makeElement("span", "", "", "", tempFourText);
@@ -644,7 +643,7 @@ export function hourlyForecast(hourlyBox, staticIcon) {
     "",
     columnFive,
   );
-  const tempFiveText = makeElement("p", "", "", "", columnFive);
+  const tempFiveText = makeElement("p", "", "bold", "", columnFive);
   const hourlyTempFive = makeElement("span", "", "", "", tempFiveText);
   const tempDegreeFive = makeElement("span", "", "", "\u00B0", tempFiveText);
   const tempUnitFive = makeElement("span", "", "", "", tempFiveText);
@@ -745,6 +744,7 @@ export function weeklyForecast(timeBox, icon, icon2) {
   const timeThree = makeElement("div", "", "hour-day", "", rowThree);
   const weatherThree = makeElement("img", "", "static", "", rowThree);
   const tempThreeBox = makeElement("p", "", "range", "", rowThree);
+  const lowThree = makeElement("span", "", "", "L: ", tempThreeBox);
   const minTempThree = makeElement("span", "", "bold", "", tempThreeBox);
   const minTempThreeDegree = makeElement(
     "span",
@@ -770,6 +770,7 @@ export function weeklyForecast(timeBox, icon, icon2) {
   const timeFour = makeElement("div", "", "hour-day", "", rowFour);
   const weatherFour = makeElement("img", "", "static", "", rowFour);
   const tempFourBox = makeElement("p", "", "range", "", rowFour);
+  const lowFour = makeElement("span", "", "", "L: ", tempFourBox);
   const minTempFour = makeElement("span", "", "bold", "", tempFourBox);
   const minTempFourDegree = makeElement(
     "span",
@@ -795,6 +796,7 @@ export function weeklyForecast(timeBox, icon, icon2) {
   const timeFive = makeElement("div", "", "hour-day", "", rowFive);
   const weatherFive = makeElement("img", "", "static", "", rowFive);
   const tempFiveBox = makeElement("p", "", "range", "", rowFive);
+  const lowFive = makeElement("span", "", "", "L: ", tempFiveBox);
   const minTempFive = makeElement("span", "", "bold", "", tempFiveBox);
   const minTempFiveDegree = makeElement(
     "span",
@@ -820,6 +822,7 @@ export function weeklyForecast(timeBox, icon, icon2) {
   const timeSix = makeElement("div", "", "hour-day", "", rowSix);
   const weatherSix = makeElement("img", "", "static", "", rowSix);
   const tempSixBox = makeElement("p", "", "range", "", rowSix);
+  const lowSix = makeElement("span", "", "", "L: ", tempSixBox);
   const minTempSix = makeElement("span", "", "bold", "", tempSixBox);
   const minTempSixDegree = makeElement(
     "span",
@@ -845,6 +848,7 @@ export function weeklyForecast(timeBox, icon, icon2) {
   const timeSeven = makeElement("div", "", "hour-day", "", rowSeven);
   const weatherSeven = makeElement("img", "", "static", "", rowSeven);
   const tempSevenBox = makeElement("p", "", "range", "", rowSeven);
+  const lowSeven = makeElement("span", "", "", "L: ", tempSevenBox);
   const minTempSeven = makeElement("span", "", "bold", "", tempSevenBox);
   const minTempSevenDegree = makeElement(
     "span",
